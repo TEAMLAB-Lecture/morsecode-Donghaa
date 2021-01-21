@@ -303,16 +303,15 @@ def encoding_sentence(english_sentence):
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당 또는 필요에 따라 자유로운 수정
     
     cleaned_english_sentence = get_cleaned_english_sentence(english_sentence)
-    result = ''
+    sentence_list = cleaned_english_sentence.split()
+    result = []
 
-    for text in cleaned_english_sentence:
-        if text == ' ':
-            result += ' '
-        else:
-            result += encoding_character(text)
-            result += ' '
+    for text in sentence_list:
+        for alpha in text:
+            result.append(encoding_character(alpha))
+        result.append('s')
 
-    return result
+    return ' '.join(result).replace('s', '')
 
     # ==================================
 
